@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Seat Reservation</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:dataTable border="0" var="entry" value="#{seatReservationBean.seats}" 
+			style="text-align: center;">
+			<h:column>
+				<f:facet name="header">No.</f:facet>
+				#{entry.row + 1}
+			</h:column>
+			<h:column>
+				<f:facet name="header">A</f:facet>
+				<h:commandLink action="#{seatReservationBean.toggleStatus(entry.row,'a')}">
+					<f:ajax render="@form" />
+					<h:graphicImage url="images/reserved.png" 
+					rendered="#{entry.a}" />
+					<h:graphicImage url="images/vacancy.png" 
+					rendered="#{not entry.a}" />
+				</h:commandLink>
+			</h:column>
+			<h:column>
+				<f:facet name="header">B</f:facet>
+				<h:commandLink action="#{seatReservationBean.toggleStatus(entry.row,'b')}">
+					<f:ajax render="@form" />
+					<h:graphicImage url="images/reserved.png" 
+					rendered="#{entry.b}" />
+					<h:graphicImage url="images/vacancy.png" 
+					rendered="#{not entry.b}" />
+				</h:commandLink>
+			</h:column>
+			<h:column>
+				<f:facet name="header">C</f:facet>
+				<h:commandLink action="#{seatReservationBean.toggleStatus(entry.row,'c')}">
+					<f:ajax render="@form" />
+					<h:graphicImage url="images/reserved.png" 
+					rendered="#{entry.c}" />
+					<h:graphicImage url="images/vacancy.png" 
+					rendered="#{not entry.c}" />
+				</h:commandLink>
+			</h:column>
+			<h:column>
+				<f:facet name="header"></f:facet>
+				<h:graphicImage url="images/white.png" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"></f:facet>
+			</h:column>
+			<h:column>
+				<f:facet name="header">D</f:facet>
+				<h:commandLink action="#{seatReservationBean.toggleStatus(entry.row,'d')}">
+					<f:ajax render="@form" />
+					<h:graphicImage url="images/reserved.png" 
+					rendered="#{entry.d}" />
+					<h:graphicImage url="images/vacancy.png" 
+					rendered="#{not entry.d}" />
+				</h:commandLink>
+			</h:column>
+			<h:column>
+				<f:facet name="header">E</f:facet>
+				<h:commandLink action="#{seatReservationBean.toggleStatus(entry.row,'e')}">
+					<f:ajax render="@form" />
+					<h:graphicImage url="images/reserved.png" 
+					rendered="#{entry.e}" />
+					<h:graphicImage url="images/vacancy.png" 
+					rendered="#{not entry.e}" />
+				</h:commandLink>
+			</h:column>
+		</h:dataTable>
+	
+		<h:panelGrid columns="3" border="0">
+			<f:facet name="header">
+				<h:panelGroup>
+					<h:outputText value="　"/>
+				</h:panelGroup>
+			</f:facet>
+			<h:commandLink action="#{seatReservationBean.dataClear}">
+				<f:verbatim>Clear</f:verbatim>
+			</h:commandLink>
+			<h:outputText value="　　　　　"/>
+			<h:commandLink action="#{seatReservationBean.reLoad}">
+				<f:verbatim>Reload</f:verbatim>
+			</h:commandLink>	
+		</h:panelGrid>	
+	</h:form>
+</h:body>
+</html>
